@@ -1,0 +1,27 @@
+service_tickets = {
+  "Ticket001": {"Customer": "Alice", "Issue": "Login problem", "Status": "open"}, 
+  "Ticket002": {"Customer": "Bob", "Issue": "Payment issue", "Status": "closed"}
+  }
+
+def add_service_ticket(tickets_dict, ticket_id, customer_name, issue):
+  if ticket_id not in tickets_dict:
+    tickets_dict[ticket_id] = {"Customer": customer_name, "Issue": issue, "Status": "open"}
+    print(f"Ticket ID {ticket_id} for customer {customer_name} having issue of {issue} has been added.")
+  else:
+    print(f"Ticket ID {ticket_id} already exists. Please go to the next number.")
+
+def update_status(tickets_dict, ticket_id, status):
+  if ticket_id not in tickets_dict:
+    print(f"Ticket {ticket_id} not found.")
+  else:
+    tickets_dict[ticket_id]["Status"] = input("Please enter the status of ticket {ticket_id} (open/closed): ").lower()
+    print(f"Status of ticket {ticket_id}: {status}")
+
+def view_tickets(tickets_dict):
+  print(tickets_dict)
+
+add_service_ticket(service_tickets, "Ticket003", "Michelle", "Computer not working")
+update_status(service_tickets, "Ticket003", "closed")
+view_tickets(service_tickets)
+
+# print(service_tickets)
